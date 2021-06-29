@@ -4,9 +4,8 @@ const EmojiHistory = ({ emojiHistory }) => {
 	return (
 		<div>
 			<p>History component</p>
-			{this.props.emojiHistory.map((emoji) => (
-				<div>{emoji}</div>
-			))}
+			{emojiHistory.length > 0 &&
+				emojiHistory.map((emoji) => <div>{emoji}</div>)}
 		</div>
 	);
 };

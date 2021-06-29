@@ -15,7 +15,7 @@ export default class App extends PureComponent {
 	}
 
 	handleHistory = (emoji) => {
-		const updatedState = [...emojiHistory, emoji];
+		const updatedState = [...this.state.emojiHistory, emoji];
 		this.setState({ emojiHistory: updatedState });
 	};
 
