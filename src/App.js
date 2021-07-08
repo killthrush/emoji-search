@@ -11,7 +11,7 @@ export default class App extends PureComponent {
     super(props);
     this.state = {
       filteredEmoji: filterEmoji("", 20),
-      selectedEmojis: {},
+      selectedEmojis: [],
     };
   }
 
@@ -21,13 +21,17 @@ export default class App extends PureComponent {
     });
   };
 
-  handleClickEmoji = (emoji) => {
+  handleClickEmoji = (symbol, title) => {
+    const newEmoji = {
+      symbol,
+      title
+    }
     this.setState({
       ...this.state,
-      selectedEmojis: {
+      selectedEmojis: [
         ...this.state.selectedEmojis,
-        emoji
-      },
+        newEmoji
+      ],
     });
   }
 
@@ -35,7 +39,7 @@ export default class App extends PureComponent {
     return (
       <div>
         <Header />
-        <SelectedEmojis emojis={this.state.selectedEmojis} />
+        <SelectedEmojis selectedEmojis={this.state.selectedEmojis} />
         <SearchInput textChange={this.handleSearchChange} />
         <EmojiResults handleClickEmoji={this.handleClickEmoji} emojiData={this.state.filteredEmoji} />
       </div>
