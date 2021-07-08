@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, useState } from "react";
 import PropTypes from "prop-types";
 import Clipboard from "clipboard";
 
@@ -17,8 +17,8 @@ export default class EmojiResults extends PureComponent {
   componentWillUnmount() {
     this.clipboard.destroy();
   }
-
-  render() {
+  
+ render() {    
     return (
       <div className="component-emoji-results">
         {this.props.emojiData.map(emojiData => (
@@ -26,6 +26,7 @@ export default class EmojiResults extends PureComponent {
             key={emojiData.title}
             symbol={emojiData.symbol}
             title={emojiData.title}
+            handleClickEmoji={this.props.handleClickEmoji}
           />
         ))}
       </div>
